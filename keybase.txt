@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/hosiet
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://hosiet.me
+  * I am hosiet (https://keybase.io/hosiet) on keybase.
+  * I have a public key with fingerprint 35F4 E030 2F39 1EBF 650B  88ED 3FBF 7819 3B24 4E51
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101055a22f727e091fd515bd38ce9f517b6348a8ad6093121dcf2b1904722e21ada0a",
+            "fingerprint": "35f4e0302f391ebf650b88ed3fbf78193b244e51",
+            "host": "keybase.io",
+            "key_id": "3fbf78193b244e51",
+            "kid": "0101055a22f727e091fd515bd38ce9f517b6348a8ad6093121dcf2b1904722e21ada0a",
+            "uid": "96ca2ffbe95a78f7278a5b83ad652919",
+            "username": "hosiet"
+        },
+        "service": {
+            "hostname": "hosiet.me",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1467199479,
+    "expire_in": 157680000,
+    "prev": "0319f04a886e03ef9a7d6a6b767e2402734cb8ef645cc6295e659c95fd2d3eec",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGtUm1QVFUYZhfEZCpkSGMcZPCG9jHLdr8/QEGBRMQYKQIZZ1zuufdcuIC7697r
+8hXNFKGDRkGTrkRflAWGYKwfkxgjMSRGJusmY6amwki7BdhWSgIy3cvUj2b62Tk/
+znve8zzPed533oaHgoOMhq6PQMQSw9EYwzd+EJSnHJmuQoBNrEASqpASOH/AUhEq
+qqVEFpEEBMW0TVE8jksMzkCUwySRwiggEqwAOYnCGEATJMuzvEijHIHhmChIOMA4
+lGRwHOIYL/Ioj5gQSbYWQofdIVtVTZagJBKiBIpLBIdBINEUClgWioQEJIbFOALg
+JAkpTCMW2RSdoZkDvALNsk3LaRfLvL3/wP/PvnfOy3G0wOOSBCBH8QyrS7I8BVhC
+Y1M4h3E6UIEOK78damjNsgxVpNqEaDmnLEC9rXod/3o3a7EJsTtsqk2wleppVbUr
+CTpNrbDruDIILH8rWIBsFbUWagwndCiyzYokYBpSUGVdEiNpBuM4kuFMCCy3yw5o
+kXUExdAsqi39H+jU+0JgnISSPMvS8HmUgBLHMyLN04ChGYiTKM4QpABYKNEkJQg0
+zlGQpjiBoyQRFwkIBUQvaofVhiSQmk++UNNU5EIrr+50QKQ6rM4YHRJkMAaFLjDq
+wxUUtmjxPxPXPhM+u+j4u3siU866LYXHi8cGVjiPxXWU2b9ORvPTYz8ORMZ1/5h5
+KjG/fvMP67MaYel3E+ujPBz54u0m482Veb9E+EYA80L85zMh4+qlxtRUpmDWIQ9d
+Pdq7/6dvXf1ve29vOtfsKt7AH3TtvjzlCuyayuiz/lGFbl111XsgfNobYr31VMnS
+PPCe78nWuXfWpQyU7Uj6ue7UPX9/b1Naxlp/tjs4/PArcqYxsaA9VaLBaM3asTjS
+5cmqNSzdljnS7Tj52JbIbVMFX/5Zfxak8eiymFudw+MLpYbXxgKR8fcnn0n/LTfF
+f8M3OvnBidpof3JFetHqXWZleYFLbvBXZqwYer8lsf2+8+FMYeGquZrfleyMQNMj
+cxOtr3d4lt27MggqKiufMJ003QWK99Crs0PZjZuxTxz2ly4WbbLljPOx6MoWX0o2
+++un349cm8LNh3zX+/aFrgt1vxWoTto+2CPk7I1pXpBbUjUy6l3Sf4NS0y5sbQ/O
+yT0ys4fLfZToqT0fuLB8X9u0kHRx9YGu/ZZ8T5TlhHTn8eGayQdzT7edi650epM+
+K1ojHbyW88b15o2X0M6+YxNZT7e0DT9wfuzm3oic5DNbYsvvdlwp95yJf+7D2ahB
+3Jd1h9090F2PPBvf9bK7x7/BNjNqjzeY1xwW4OnLzFhZhefN+vQvBupLO8Nmi3vd
+da1f/QU=
+=RtLh
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/hosiet
+
+==================================================================
+
+

@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>USTC Open Source Software Mirror</title>
+    <link href="https://fonts.lug.ustc.edu.cn/css?family=Clicker+Script%7COpen+Sans:400,300" rel="stylesheet" type="text/css">
+<style rel='stylesheet' type='text/css'>
+/* css reset */
+html{color:#000;background:transparent;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}li{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}input,textarea,select{*font-size:100%}legend{color:#000}
+/*stylesheet here*/
+body{
+    background-color: #FDFFFD;
+}
+#header{
+    width:75%;
+    margin:0 auto;
+}
+#headlinks{
+    float:right;
+    margin-right: 10px;
+    padding: 10px 0;
+}
+#headlinks li{
+    float:left;
+    margin-left:25px;
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    font-size:16px;
+    color:#EEECDF;
+}
+#headlinks li:hover{
+    color:#FFF;
+}
+#headlinks li a{
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    font-size:16px;
+    color:#EEECDF;
+    text-decoration:none;
+}
+#headlinks li a:hover{
+    color:#FFF;
+}
+#welcome{
+    /*width: 100%;*/
+    padding: 40px 15px 40px 0px;
+    background: #40bd97; /* Old browsers */
+    background: -moz-linear-gradient(top, #40bd97 0%, #07a878 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#40bd97), color-stop(100%,#07a878)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #40bd97 0%,#07a878 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #40bd97 0%,#07a878 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #40bd97 0%,#07a878 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #40bd97 0%,#07a878 100%); /* W3C */
+}
+#intro{
+    margin:0 auto;
+    width:75%;
+    color:#F1F1F1;
+}
+#intro h1{
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    font-weight:400;
+    font-size:48px;
+    margin-top:10px;
+    color:#FFF;
+}
+#intro h2{
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    font-weight:300;
+    font-size:24px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+#intro p{
+    margin-bottom:0px;
+    line-height:1.3em;
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    font-weight:300;
+    font-size:18px;
+}
+#wrapper{
+    width:75%;
+    margin:25px auto;
+}
+#filelist h3{
+    color:#07A878;
+    font-family: "Open Sans","Ubuntu","Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "STXihei", "ST Heiti", "WenQuanYi Zen Hei Sharp", sans-serif;
+    font-weight:100;
+    font-size:24px;
+    margin:5px 0 5px 0;
+}
+#filelist table{
+    width:100%;
+    empty-cells:hide;
+}
+th{
+    font-weight:normal;
+    text-align:left;
+    font-size:16px;
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    padding:3px 0px;
+}
+thead{
+    /*border-bottom:thin dotted #000;*/
+}
+#name{
+    text-align:left;
+    padding:3px 0 3px 3px;
+}
+#help{
+    text-align:left;
+    padding:3px 3px 3px 0;
+}
+#filelist td{
+    font-size:14px;
+    line-height:20px;
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+}
+#filelist td.help{
+    padding:0px 3px 0px 0px;
+    text-align: left;
+}
+#filelist td.filename
+{
+    padding-left:3px;
+}
+#filelist td a{
+    color:#0B486B;
+    text-decoration: none;
+}
+#filelist a:hover{
+    text-decoration: underline;
+}
+#revproxy,
+#revproxy + h3 > label > span + span,
+#revproxy:checked + h3 > label > span,
+#revproxy ~ table {
+    display: none;
+}
+#revproxy:checked + h3 > label > span + span {
+    display: inline-block;
+}
+#revproxy:checked ~ table {
+    display: table;
+}
+#filename{
+    text-align:left;
+    width:15%;
+}
+.filesize{
+    display:none;
+    text-align:right;
+    width:0%;
+}
+.filetime{
+    text-align:left;
+    width:35%;
+}
+
+.help{
+    text-align:left;
+    width:20px;
+}
+tbody tr:hover{
+    background-color:#DDEADD;
+}
+#sidebar div{
+    margin-bottom: 25px;
+}
+#sidebar h3{
+    color:#07A878;
+    font-family: "Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "STXihei", "ST Heiti", "WenQuanYi Zen Hei Sharp", sans-serif;
+    font-weight:300;
+    font-size:24px;
+    margin:0px 0 15px 0;
+}
+#sidebar p,a{
+    line-height: 1.5em;
+    font-family: "Open Sans","Ubuntu","Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "STXihei", "ST Heiti", "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+#sidebar a{
+    color:#030303;
+    text-decoration: none;
+}
+#sidebar a:hover{
+    text-decoration: underline;
+}
+.btn{
+    display: inline-block;
+    background-color: #07A878;
+    margin:12px auto 12px auto;
+    padding:3px 20px;
+    line-height: 1.5em;
+    font-family: "Open Sans","Ubuntu","Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "STXihei", "ST Heiti", "WenQuanYi Zen Hei Sharp", sans-serif;
+    font-size: 20px;
+    color:#f3f3f3;
+    text-align: center;
+    -webkit-transition: background 0.3s linear;
+    -moz-transition: background 0.3s linear;
+    -ms-transition: background 0.3s linear;
+    -o-transition: background 0.3s linear;
+    transition: background 0.3s linear;
+    cursor:pointer;
+
+}
+.btn:hover{
+    background-color:#40BD97;
+}
+#footer{
+    background-color: #333;
+    color:#bbb;
+    padding:30px 0;
+}
+#footercontent{
+    width:75%;
+    margin:0 auto;
+}
+#footerleft{
+    font-family: "Open Sans","Ubuntu","Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "STXihei", "ST Heiti", "WenQuanYi Zen Hei Sharp", sans-serif;
+    width:60%;
+    float:left;
+    font-size: 14px;
+    line-height: 1.5em;
+}
+#footerleft a{
+    color:#ccc;
+}
+#footerright{
+    width:33%;
+    float:right;
+    text-align: center;
+}
+#footerright p{
+    margin-top:5px;
+}
+.modal
+{
+    visibility: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 5;
+}
+.modalclear{
+    width:100%;
+    background-color:rgba(255,255,255,0.85);
+    height:100%;
+    z-index: 6;
+}
+
+.modalcontainer
+{
+    position: absolute;
+    width: 40%;
+    min-width: 345px;
+    top:10%;
+    left:30%;
+    margin:0 auto;
+    background-color: #FCFCFC;
+    border: 3px solid #ccc;
+    padding: 0px;
+    text-align: left;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 6px 3px rgba(128, 128, 128, 128);
+    box-shadow: 0px 0px 6px 3px rgba(128, 128, 128, 128);
+    opacity: 1;
+    z-index:7;
+}
+.modaltitle{
+    font-family: "Open Sans","Ubuntu",Helvetica, Arial, Geneva, sans-serif;
+    font-weight:300;
+    font-size:22px;
+    padding:8px 20px;
+    background-color: #07A878;
+    color:#FCFCFC;
+}
+.modalcontent{
+    font-family: "Open Sans","Ubuntu","Hiragino Sans GB", "Wenquanyi Micro Hei", "WenQuanYi Micro Hei Mono", "WenQuanYi Zen Hei", "WenQuanYi Zen Hei", "Apple LiGothic Medium", "STXihei", "ST Heiti", "WenQuanYi Zen Hei Sharp", sans-serif;
+    font-size:22px;
+    padding:8px 20px;
+    background-color: #FFFFFF;
+    line-height: 1.8em;
+}
+.modalcontent p{
+    margin-bottom: 10px;
+}
+.modalcontent select{
+    width:300px;
+}
+@media screen and (min-width:881px) {
+    #filelist{
+        float:left;
+        width:60%;
+        border-right: 1px solid #eee;
+        padding-right: 30px;
+    }
+    #sidebar{
+        float:right;
+        width:33%;
+    }
+}
+@media screen and (max-width:880px) {
+    #filelist{
+        float: left;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #sidebar {
+        float: left;
+        max-width: 400px;
+        width: 100%;
+    }
+    #isomodalcontainer {
+        left: 0%;
+        width: 100%;
+        text-align: center;
+        min-width: 0;
+    }
+}
+/* when a page is narrower than 540px,
+   regarded as mobile device
+ */
+@media screen and (max-width:540px) {
+    .update, .filetime, #infinity {
+        display: none;
+    }
+    #intro h2 {
+        font-weight: 500;
+    }
+    #footerleft, #header {
+        width: 100%;
+        float: none;
+    }
+    #footerright {
+        float: none;
+        width: 100%;
+        margin-top: 2em;
+    }
+    #welcome {
+        padding-bottom: 0px;
+    }
+    #search {
+        width: 50%;
+    }
+}
+.hidden {
+    display: none;
+}
+#filetitle {
+    float: left;
+    line-height: 36px;
+}
+#search {
+    float: right;
+    line-height: 18px;
+    padding: 8px;
+    border: 1px solid #e3e3e3;
+    margin-top: 5px;
+    max-width: 240px;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div id="header">
+    <ul id="headlinks">
+        <li><a href="/status/" target="_blank">Status</a></li>
+        <li><a href="https://servers.blog.ustc.edu.cn/" target="_blank">News</a></li>
+        <li><a href="https://lug.ustc.edu.cn/wiki/mirrors/help" target="_blank">Help</a></li>
+        <li><a href="https://lug.ustc.edu.cn" target="_blank">About</a></li>
+    </ul>
+</div>
+<div id="welcome">
+    <div id="intro">
+        <h1 id="infinity">Another infinity</h1>
+        <h2>Welcome to USTC open source software mirror.</h2>
+        <p>Brought to you by University of Science and Technology of China and USTCLUG.</p>
+        <br>
+    </div>
+</div>
+<div id="wrapper">
+    <div id="filelist">
+        <!--FIXME: kind of ugly :(-->
+        <div>
+            <input id="revproxy" type="checkbox"/>
+            <h3>
+            <label for="revproxy">
+            反向代理列表
+            <span>+</span><span>-</span>
+            </label>
+            </h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>downloads.openwrt.org</td>
+                        <td>openwrt.mirrors.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>registry-1.docker.io</td>
+                        <td>docker.mirrors.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>registry.npmjs.org</td>
+                        <td>npmreg.mirrors.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>www.npmjs.com</td>
+                        <td>npm.mirrors.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>fonts.gstatic.com</td>
+                        <td>fonts-gstatic.lug.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>fonts.googleapis.com</td>
+                        <td>fonts.lug.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>ajax.googleapis.com</td>
+                        <td>ajax.lug.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>themes.googleusercontent.com</td>
+                        <td>google-themes.lug.ustc.edu.cn</td>
+                    </tr>
+                    <tr>
+                        <td>secure.gravatar.com</td>
+                        <td>gravatar.lug.ustc.edu.cn</td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+        <div>
+            <h3 id="filetitle">文件列表</h3>
+            <input placeholder="按 S 过滤" id="search" type="search" autocomplete="off"/>
+        </div>
+        <table class="filelist">
+            <thead>
+                <tr id="firstline">
+                    <th id="name">Folder</th>
+                    <th class="update">Last Update</th>
+                    <th id="help">Help</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="filename"><a href="/alpine">alpine</a></td>
+                <td class="filetime">2016-05-16 04:47:07</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/alpine">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/anthon">anthon</a></td>
+                <td class="filetime">2016-05-16 15:01:43</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/anthon">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/aosp">aosp</a></td>
+                <td class="filetime">2016-05-16 04:33:11</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/aosp">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/apache">apache</a></td>
+                <td class="filetime">2016-05-16 20:35:06</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/apache"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/apt.dockerproject.org">apt.dockerproject.org</a></td>
+                <td class="filetime">2015-10-10 01:38:53</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/apt.dockerproject.org"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/archive.raspberrypi.org">archive.raspberrypi.org</a></td>
+                <td class="filetime">2016-05-16 16:16:20</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/archive.raspberrypi.org">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/archlinux">archlinux</a></td>
+                <td class="filetime">2016-05-16 19:56:45</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/archlinux">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/archlinuxarm">archlinuxarm</a></td>
+                <td class="filetime">2016-05-16 18:03:43</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/archlinuxarm">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/archlinuxcn">archlinuxcn</a></td>
+                <td class="filetime">2016-05-16 18:10:19</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/archlinuxcn">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/backtrack">backtrack</a></td>
+                <td class="filetime">2015-08-12 13:14:15</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/backtrack"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/bioc">bioc</a></td>
+                <td class="filetime">2016-05-15 05:45:27</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/bioc"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/bjlx">bjlx</a></td>
+                <td class="filetime">2016-05-16 12:45:04</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/bjlx"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/blackarch">blackarch</a></td>
+                <td class="filetime">2016-05-16 03:43:27</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/blackarch">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/brew.git">brew.git</a></td>
+                <td class="filetime">2016-05-16 19:55:05</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/centos">centos</a></td>
+                <td class="filetime">2016-05-16 19:34:52</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/centos">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ceph">ceph</a></td>
+                <td class="filetime">2016-05-16 02:16:53</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ceph"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/chakra">chakra</a></td>
+                <td class="filetime">2016-05-16 17:27:13</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/chakra">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/CPAN">CPAN</a></td>
+                <td class="filetime">2016-05-16 12:50:04</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/CPAN">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/CRAN">CRAN</a></td>
+                <td class="filetime">2016-05-16 14:46:35</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/CRAN">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/crates">crates</a></td>
+                <td class="filetime">2016-05-16 18:17:11</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/crates">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/CTAN">CTAN</a></td>
+                <td class="filetime">2016-05-16 15:01:03</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/CTAN"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/cygwin">cygwin</a></td>
+                <td class="filetime">2016-05-16 15:44:52</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/cygwin"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/cygwinports">cygwinports</a></td>
+                <td class="filetime">2016-05-16 18:40:24</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/cygwinports"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/debian">debian</a></td>
+                <td class="filetime">2016-05-16 18:13:20</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/debian">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/debian-backports">debian-backports</a></td>
+                <td class="filetime">2016-04-12 22:00:05</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/debian-backports">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/debian-cd">debian-cd</a></td>
+                <td class="filetime">2016-05-16 05:02:38</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/debian-cd"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/debian-multimedia">debian-multimedia</a></td>
+                <td class="filetime">2016-05-16 02:45:39</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/debian-multimedia">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/debian-security">debian-security</a></td>
+                <td class="filetime">2016-05-16 20:01:01</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/debian-security">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/debian-volatile">debian-volatile</a></td>
+                <td class="filetime">2015-08-21 23:22:31</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/debian-volatile"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/deepin">deepin</a></td>
+                <td class="filetime">2016-05-16 17:41:30</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/deepin"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/deepin-cd">deepin-cd</a></td>
+                <td class="filetime">2016-05-16 01:15:15</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/deepin-cd"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/dotdeb">dotdeb</a></td>
+                <td class="filetime">2016-05-16 03:25:09</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/dotdeb">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/eclipse">eclipse</a></td>
+                <td class="filetime">2016-05-16 07:44:39</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/eclipse">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/emdebian">emdebian</a></td>
+                <td class="filetime">2016-05-16 16:55:13</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/emdebian"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/epel">epel</a></td>
+                <td class="filetime">2016-05-16 19:31:28</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/epel">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/fedora">fedora</a></td>
+                <td class="filetime">2016-05-16 20:04:19</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/fedora">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/fink">fink</a></td>
+                <td class="filetime">2016-05-15 11:54:58</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/fink"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/freebsd">freebsd</a></td>
+                <td class="filetime">2016-05-16 17:23:59</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/freebsd">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/gentoo">gentoo</a></td>
+                <td class="filetime">2016-05-16 17:10:36</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/gentoo">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/gentoo-portage">gentoo-portage</a></td>
+                <td class="filetime">2016-05-16 17:11:17</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/gentoo-portage">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/get.docker.com">get.docker.com</a></td>
+                <td class="filetime">2015-10-10 01:37:22</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/get.docker.com"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/gimp">gimp</a></td>
+                <td class="filetime">2016-05-16 19:47:09</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/gimp"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/gnome">gnome</a></td>
+                <td class="filetime">2016-05-16 06:25:11</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/gnome"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/gnu">gnu</a></td>
+                <td class="filetime">2016-05-16 03:48:54</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/gnu"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/homebrew-bottles">homebrew-bottles</a></td>
+                <td class="filetime">2016-05-16 19:55:19</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-bottles">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/homebrew-core.git">homebrew-core.git</a></td>
+                <td class="filetime">2016-05-16 19:55:10</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew-core.git">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/homebrew.git">homebrew.git</a></td>
+                <td class="filetime">2016-05-16 09:50:12</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/homebrew.git">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/infinality-bundle">infinality-bundle</a></td>
+                <td class="filetime">2016-05-16 20:30:02</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/infinality-bundle">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/kali">kali</a></td>
+                <td class="filetime">2016-05-16 20:31:22</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/kali">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/kali-images">kali-images</a></td>
+                <td class="filetime">2016-05-16 15:13:05</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/kali-images"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/kali-security">kali-security</a></td>
+                <td class="filetime">2016-05-16 20:13:44</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/kali-security"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/kde">kde</a></td>
+                <td class="filetime">2016-05-16 06:35:41</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/kde">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/kde-application">kde-application</a></td>
+                <td class="filetime">2016-05-16 12:17:08</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/kde-application"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/kernel.org">kernel.org</a></td>
+                <td class="filetime">2016-05-16 14:52:19</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/kernel.org"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/knoppix">knoppix</a></td>
+                <td class="filetime">2016-05-16 10:05:09</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/knoppix"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/knoppix-dvd">knoppix-dvd</a></td>
+                <td class="filetime">2016-05-16 11:15:10</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/knoppix-dvd"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/lfs">lfs</a></td>
+                <td class="filetime">2016-05-15 00:25:03</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/lfs"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/linux-2.6.git">linux-2.6.git</a></td>
+                <td class="filetime">2016-05-15 23:35:17</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/linux-2.6.git"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/linux-kernel">linux-kernel</a></td>
+                <td class="filetime">2016-05-14 02:54:01</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/linux-kernel"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/linux.git">linux.git</a></td>
+                <td class="filetime">2016-05-16 18:07:39</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/linux.git">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/linuxmint">linuxmint</a></td>
+                <td class="filetime">2016-05-16 20:24:52</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/linuxmint">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/linuxmint-cd">linuxmint-cd</a></td>
+                <td class="filetime">2016-05-16 01:55:09</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/linuxmint-cd"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/loongson">loongson</a></td>
+                <td class="filetime">2016-05-15 05:35:07</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/loongson"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/loongson2f">loongson2f</a></td>
+                <td class="filetime">2016-05-15 08:05:05</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/loongson2f"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/macports">macports</a></td>
+                <td class="filetime">2016-05-16 07:32:19</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/macports"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/mageia">mageia</a></td>
+                <td class="filetime">2016-05-16 16:59:34</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/mageia"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/manjaro">manjaro</a></td>
+                <td class="filetime">2016-05-16 18:38:43</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/manjaro"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/mariadb">mariadb</a></td>
+                <td class="filetime">2016-05-16 18:00:11</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/mariadb"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/monitoring-plugins">monitoring-plugins</a></td>
+                <td class="filetime">2016-05-16 09:37:08</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/monitoring-plugins"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/msys2">msys2</a></td>
+                <td class="filetime">2016-05-16 13:15:50</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/msys2">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/neurodebian">neurodebian</a></td>
+                <td class="filetime">2016-05-16 05:36:46</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/neurodebian"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/node">node</a></td>
+                <td class="filetime">2016-05-16 17:40:44</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/node"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/openelec">openelec</a></td>
+                <td class="filetime">2016-05-16 10:47:09</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/openelec"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/opensuse">opensuse</a></td>
+                <td class="filetime">2016-05-16 20:11:13</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/opensuse">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/openvz">openvz</a></td>
+                <td class="filetime">2016-05-16 15:18:51</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/openvz"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/postgresql">postgresql</a></td>
+                <td class="filetime">2016-05-16 00:59:38</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/postgresql"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/puppy">puppy</a></td>
+                <td class="filetime">2016-05-16 16:47:43</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/puppy"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/pypi">pypi</a></td>
+                <td class="filetime">2016-05-16 16:45:24</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/pypi">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/pythonxy">pythonxy</a></td>
+                <td class="filetime">2016-05-15 00:25:13</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/pythonxy"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/qomo">qomo</a></td>
+                <td class="filetime">2015-08-01 19:31:49</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/qomo"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/qtproject">qtproject</a></td>
+                <td class="filetime">2016-05-16 20:17:20</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/qtproject">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/raspberrypi">raspberrypi</a></td>
+                <td class="filetime">2015-10-09 23:12:41</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/raspberrypi"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/raspbian">raspbian</a></td>
+                <td class="filetime">2016-05-16 20:09:45</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/raspbian">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/rfc">rfc</a></td>
+                <td class="filetime">2016-05-15 22:55:32</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/rfc"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ros">ros</a></td>
+                <td class="filetime">2016-05-16 07:07:42</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ros">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/rpmfusion">rpmfusion</a></td>
+                <td class="filetime">2016-05-16 15:49:47</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/rpmfusion">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ruby">ruby</a></td>
+                <td class="filetime">2016-05-16 09:56:02</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ruby"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/rubygems">rubygems</a></td>
+                <td class="filetime">2016-05-16 20:18:26</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/rubygems">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/rust-static">rust-static</a></td>
+                <td class="filetime">2016-05-16 03:19:59</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/rust-static">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/sagemath">sagemath</a></td>
+                <td class="filetime">2016-05-16 18:27:25</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/sagemath"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/salt-debian">salt-debian</a></td>
+                <td class="filetime">2016-05-15 21:35:08</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/salt-debian"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/scientificlinux">scientificlinux</a></td>
+                <td class="filetime">2016-05-16 16:42:54</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/scientificlinux">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/slackware">slackware</a></td>
+                <td class="filetime">2016-05-16 15:58:33</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/slackware"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/sourceware.org">sourceware.org</a></td>
+                <td class="filetime">2016-05-16 18:40:24</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/sourceware.org"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/steamos">steamos</a></td>
+                <td class="filetime">2016-05-16 05:22:05</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/steamos"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/tdf">tdf</a></td>
+                <td class="filetime">2016-05-16 11:57:32</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/tdf"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/tldp">tldp</a></td>
+                <td class="filetime">2016-05-16 06:52:27</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/tldp"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/trisquel">trisquel</a></td>
+                <td class="filetime">2016-05-16 01:50:12</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/trisquel">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/trisquel-images">trisquel-images</a></td>
+                <td class="filetime">2016-05-16 03:05:06</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/trisquel-images"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/turnkeylinux">turnkeylinux</a></td>
+                <td class="filetime">2016-05-16 20:22:55</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/turnkeylinux"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ubuntu">ubuntu</a></td>
+                <td class="filetime">2016-05-16 20:00:02</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ubuntu-cdimage">ubuntu-cdimage</a></td>
+                <td class="filetime">2016-05-16 19:30:13</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu-cdimage"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ubuntu-old-releases">ubuntu-old-releases</a></td>
+                <td class="filetime">2016-05-15 08:41:59</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu-old-releases"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ubuntu-ports">ubuntu-ports</a></td>
+                <td class="filetime">2016-05-16 07:28:43</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu-ports"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ubuntu-releases">ubuntu-releases</a></td>
+                <td class="filetime">2016-05-16 18:30:08</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu-releases"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/ustclug">ustclug</a></td>
+                <td class="filetime">2015-10-27 15:03:03</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/ustclug"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/videolan-ftp">videolan-ftp</a></td>
+                <td class="filetime">2016-05-16 13:47:52</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/videolan-ftp"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/vim">vim</a></td>
+                <td class="filetime">2016-05-16 14:05:58</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/vim"></a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/xbmc">xbmc</a></td>
+                <td class="filetime">2016-05-16 02:42:09</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/xbmc">Help</a>
+                </td>
+            </tr><tr>
+                <td class="filename"><a href="/Xorg">Xorg</a></td>
+                <td class="filetime">2016-05-16 04:26:25</td>
+                <td class="help">
+                    <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/Xorg"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<div id="sidebar">
+    <div id="servernews">
+    <h3>镜像站新闻通知</h3>
+    
+        <p><a href="https://servers.ustclug.org/2016/04/add-brew-and-homebrew-core-mirror/">新增brew.git与homebrew-core.git镜像</a></p><p><a href="https://servers.ustclug.org/2016/04/homebrew-bottles-mirror-fix-homebrew-core-problem/">Homebrew Bottles源修复同步失效的问题</a></p><p><a href="https://servers.ustclug.org/2016/03/mirrors-change-domain/">Mirrors 更换域名通知</a></p>
+    
+    </div>
+    <div id="cdimages">
+        <h3>获取发行版映像</h3>
+        <p>这里为您提供各大主流 Linux 发行版的安装镜像 / ISO 文件，请根据您的发行版及其详细版本进行选择：</p>
+        <p></p>
+        <span class="btn" onclick="modal()">获取安装镜像 &gt;</span>
+    </div>
+    <div id="mirrorshelp">
+        <h3>Mirrors 帮助</h3>
+        <p>如果您不了解如何配置 Linux 发行版 / 软件的安装源， 这里为您提供了主流发行版的软件源配置帮助：</p>
+        <span class="btn" onclick="window.open('https://lug.ustc.edu.cn/wiki/mirrors/help')">配置软件源  &gt;</span>
+        <p>您也可以通过左边的文件列表中相应源的 Help 链接寻求帮助。</p>
+        <span></span>
+    </div>
+    <div id="mirrorlinks">
+        <h3>常用链接</h3>
+        <a href="/status" target="_blank">系统状态 / Status</a><br/>
+        <a href="https://servers.blog.ustc.edu.cn/" target="_blank">LUG 服务器新闻 / News</a><br/>
+        <a href="http://lug.ustc.edu.cn/" target="_blank">LUG@USTC</a><br/>
+        <a href="https://github.com/ustclug/mirrorrequest/" target="_blank">新增镜像 / New Mirror</a><br/>
+        <a href="mailto:lug@ustc.edu.cn">联系我们 / Contact US</a><br/>
+        <span></span>
+    </div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div id="footer">
+    <div id="footercontent">
+        <div id="footerleft">
+            <p>中国科学技术大学开源软件镜像由 <a href="http://ustcnet.ustc.edu.cn/">中国科学技术大学网络信息中心</a> 提供支持。</p>
+            <p>mirrors.ustc.edu.cn 是 Debian, Ubuntu, Fedora, Archlinux, CentOS 等多个发行版的官方源和 Debian 在中国的官方镜像。目前是中国大陆高校访问量最大，收录最全的开源软件镜像。</p>
+            <p>中国科学技术大学 Linux 用户协会是由中国科学技术大学在校的 GNU/Linux 爱好者发起并组成的一个全校性群众团体。成立协会的目的在于联合科大的 GNU/Linux 使用者，搭建信息交流共享的平台，宣传自由软件的价值，提高自由软件社区文化氛围，推广自由软件在科大校园乃至合肥地区的应用。</p>
+        </div>
+        <div id="footerright">
+            <p><span style="font-family:'Open Sans','Seoge UI','Ubuntu',sans-serif; font-size:2em; font-weight:400">LUG</span><span style="font-family:'Open Sans','Seoge UI','Ubuntu',sans-serif; font-size:2em; font-weight:100" >@USTC</span></p>
+            <p style="font-family:'clicker script','segoe script','Comic Sans MS'; font-size:28px">"life,love,linux"</p>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+<div class="modal" id="isomodal">
+    <div class="modalclear" id="isomodalclear" onclick="modal()"></div>
+    <div class="modalcontainer" id="isomodalcontainer" onclick="">
+        <div class="modaltitle" id="isomodaltitle"><span>获取安装镜像</span><span onclick="modal()" style="float:right;cursor:pointer">X</span></div>
+        <div class="modalcontent" id="isomodalcontent">
+            <p>选择安装发行版： <select id="isodistro" onchange="switchdistro()"></select></p>
+            <p>选择发行版版本： <select id="isoversion">
+                <option value="none">-</option>
+            </select>
+            </p>
+            <span class="btn" onclick="downloadiso();">获取 ISO &gt;</span>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//var isoinfo = "INCLUDE isoinfo.json";
+var isoinfo = [{"distro": "Ubuntu", "urls": [{"name": "16.04 (amd64, LiveCD)", "url": "/ubuntu-releases/xenial/ubuntu-16.04-desktop-amd64.iso"}, {"name": "16.04 (i386, LiveCD)", "url": "/ubuntu-releases/xenial/ubuntu-16.04-desktop-i386.iso"}, {"name": "15.10 (amd64, LiveCD)", "url": "/ubuntu-releases/wily/ubuntu-15.10-desktop-amd64.iso"}, {"name": "15.10 (i386, LiveCD)", "url": "/ubuntu-releases/wily/ubuntu-15.10-desktop-i386.iso"}, {"name": "14.04.4 (amd64, LiveCD)", "url": "/ubuntu-releases/trusty/ubuntu-14.04.4-desktop-amd64.iso"}, {"name": "14.04.4 (i386, LiveCD)", "url": "/ubuntu-releases/trusty/ubuntu-14.04.4-desktop-i386.iso"}, {"name": "12.04.5 (amd64, LiveCD)", "url": "/ubuntu-releases/precise/ubuntu-12.04.5-desktop-amd64.iso"}, {"name": "12.04.5 (i386, LiveCD)", "url": "/ubuntu-releases/precise/ubuntu-12.04.5-desktop-i386.iso"}]}, {"distro": "Ubuntu \u884d\u751f\u7248", "urls": [{"name": "Ubuntu Kylin 16.04 (amd64)", "url": "/ubuntu-cdimage/ubuntukylin/releases/xenial/release/ubuntukylin-16.04-desktop-amd64.iso"}, {"name": "Ubuntu Kylin 16.04 (i386)", "url": "/ubuntu-cdimage/ubuntukylin/releases/xenial/release/ubuntukylin-16.04-desktop-i386.iso"}, {"name": "Kubuntu 16.04 (amd64)", "url": "/ubuntu-cdimage/kubuntu/releases/xenial/release/kubuntu-16.04-desktop-amd64.iso"}, {"name": "Kubuntu 16.04 (i386)", "url": "/ubuntu-cdimage/kubuntu/releases/xenial/release/kubuntu-16.04-desktop-i386.iso"}, {"name": "Lubuntu 16.04 (amd64)", "url": "/ubuntu-cdimage/lubuntu/releases/xenial/release/lubuntu-16.04-desktop-amd64.iso"}, {"name": "Lubuntu 16.04 (i386)", "url": "/ubuntu-cdimage/lubuntu/releases/xenial/release/lubuntu-16.04-desktop-i386.iso"}, {"name": "Xubuntu 16.04 (amd64)", "url": "/ubuntu-cdimage/xubuntu/releases/xenial/release/xubuntu-16.04-desktop-amd64.iso"}, {"name": "Xubuntu 16.04 (i386)", "url": "/ubuntu-cdimage/xubuntu/releases/xenial/release/xubuntu-16.04-desktop-i386.iso"}, {"name": "Ubuntu Gnome 16.04 (amd64)", "url": "/ubuntu-cdimage/ubuntu-gnome/releases/xenial/release/ubuntu-gnome-16.04-desktop-amd64.iso"}, {"name": "Ubuntu Gnome 16.04 (i386)", "url": "/ubuntu-cdimage/ubuntu-gnome/releases/xenial/release/ubuntu-gnome-16.04-desktop-i386.iso"}, {"name": "Ubuntu Mate 16.04 (amd64)", "url": "/ubuntu-cdimage/ubuntu-mate/releases/xenial/release/ubuntu-mate-16.04-desktop-amd64.iso"}, {"name": "Ubuntu Mate 16.04 (i386)", "url": "/ubuntu-cdimage/ubuntu-mate/releases/xenial/release/ubuntu-mate-16.04-desktop-i386.iso"}]}, {"distro": "Debian", "urls": [{"name": "8.4.0 (amd64, CD installer)", "url": "/debian-cd/current/amd64/iso-cd/debian-8.4.0-amd64-CD-1.iso"}, {"name": "8.4.0 (i386, CD installer)", "url": "/debian-cd/current/i386/iso-cd/debian-8.4.0-i386-CD-1.iso"}, {"name": "8.4.0 (amd64, xfce live)", "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-8.4.0-amd64-xfce-desktop.iso"}, {"name": "8.4.0 (amd64, mate live)", "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-8.4.0-amd64-mate-desktop.iso"}, {"name": "8.4.0 (amd64, lxde live)", "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-8.4.0-amd64-lxde-desktop.iso"}, {"name": "8.4.0 (amd64, kde live)", "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-8.4.0-amd64-kde-desktop.iso"}, {"name": "8.4.0 (amd64, gnome live)", "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-8.4.0-amd64-gnome-desktop.iso"}, {"name": "8.4.0 (amd64, cinnamon live)", "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-8.4.0-amd64-cinnamon-desktop.iso"}, {"name": "8.4.0 (i386, xfce live)", "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-8.4.0-i386-xfce-desktop.iso"}, {"name": "8.4.0 (i386, mate live)", "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-8.4.0-i386-mate-desktop.iso"}, {"name": "8.4.0 (i386, lxde live)", "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-8.4.0-i386-lxde-desktop.iso"}, {"name": "8.4.0 (i386, kde live)", "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-8.4.0-i386-kde-desktop.iso"}, {"name": "8.4.0 (i386, gnome live)", "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-8.4.0-i386-gnome-desktop.iso"}, {"name": "8.4.0 (i386, cinnamon live)", "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-8.4.0-i386-cinnamon-desktop.iso"}]}, {"distro": "Archlinux", "urls": [{"name": "2016.05.01 (dual, CLI-only)", "url": "/archlinux/iso/latest/archlinux-2016.05.01-dual.iso"}]}, {"distro": "Fedora", "urls": [{"name": "23 (x86_64, Xfce)", "url": "/fedora/linux/releases/23/Live/x86_64/Fedora-Live-Xfce-x86_64-23-10.iso"}, {"name": "23 (x86_64, KDE)", "url": "/fedora/linux/releases/23/Live/x86_64/Fedora-Live-KDE-x86_64-23-10.iso"}, {"name": "23 (i686, Xfce)", "url": "/fedora/linux/releases/23/Live/i386/Fedora-Live-Xfce-i686-23-10.iso"}, {"name": "23 (i686, KDE)", "url": "/fedora/linux/releases/23/Live/i386/Fedora-Live-KDE-i686-23-10.iso"}, {"name": "22 (x86_64, Xfce)", "url": "/fedora/linux/releases/22/Live/x86_64/Fedora-Live-Xfce-x86_64-22-3.iso"}, {"name": "22 (x86_64, KDE)", "url": "/fedora/linux/releases/22/Live/x86_64/Fedora-Live-KDE-x86_64-22-3.iso"}, {"name": "22 (i686, Xfce)", "url": "/fedora/linux/releases/22/Live/i386/Fedora-Live-Xfce-i686-22-3.iso"}, {"name": "22 (i686, KDE)", "url": "/fedora/linux/releases/22/Live/i386/Fedora-Live-KDE-i686-22-3.iso"}]}, {"distro": "Deepin", "urls": [{"name": "15.1.1 (amd64)", "url": "/deepin-cd/releases/15.1.1/deepin-15.1.1-amd64.iso"}, {"name": "15.1.1 (i386)", "url": "/deepin-cd/releases/15.1.1/deepin-15.1.1-i386.iso"}]}, {"distro": "CentOS", "urls": [{"name": "7 (x86_64, NetInstall)", "url": "/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-NetInstall-1511.iso"}, {"name": "7 (x86_64, Minimal)", "url": "/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-Minimal-1511.iso"}, {"name": "7 (x86_64, LiveKDE)", "url": "/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-LiveKDE-1511.iso"}, {"name": "7 (x86_64, LiveGNOME)", "url": "/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-LiveGNOME-1511.iso"}, {"name": "6.7 (x86_64, netinstall)", "url": "/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-netinstall.iso"}, {"name": "6.7 (x86_64, minimal)", "url": "/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-minimal.iso"}, {"name": "6.7 (x86_64, LiveDVD)", "url": "/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-LiveDVD.iso"}, {"name": "6.7 (x86_64, LiveCD)", "url": "/centos/6.7/isos/x86_64/CentOS-6.7-x86_64-LiveCD.iso"}, {"name": "6.7 (i386, netinstall)", "url": "/centos/6.7/isos/i386/CentOS-6.7-i386-netinstall.iso"}, {"name": "6.7 (i386, minimal)", "url": "/centos/6.7/isos/i386/CentOS-6.7-i386-minimal.iso"}, {"name": "6.7 (i386, LiveDVD)", "url": "/centos/6.7/isos/i386/CentOS-6.7-i386-LiveDVD.iso"}, {"name": "6.7 (i386, LiveCD)", "url": "/centos/6.7/isos/i386/CentOS-6.7-i386-LiveCD.iso"}]}, {"distro": "openSUSE", "urls": [{"name": "42.1 (x86_64)", "url": "/opensuse/distribution/leap/42.1/iso/openSUSE-Leap-42.1-DVD-x86_64.iso"}, {"name": "13.2 (x86_64, KDE-Live)", "url": "/opensuse/distribution/13.2/iso/openSUSE-13.2-KDE-Live-x86_64.iso"}, {"name": "13.2 (x86_64, GNOME-Live)", "url": "/opensuse/distribution/13.2/iso/openSUSE-13.2-GNOME-Live-x86_64.iso"}, {"name": "13.2 (x86_64, DVD)", "url": "/opensuse/distribution/13.2/iso/openSUSE-13.2-DVD-x86_64.iso"}, {"name": "13.2 (i686, KDE-Live)", "url": "/opensuse/distribution/13.2/iso/openSUSE-13.2-KDE-Live-i686.iso"}, {"name": "13.2 (i686, GNOME-Live)", "url": "/opensuse/distribution/13.2/iso/openSUSE-13.2-GNOME-Live-i686.iso"}, {"name": "13.2 (i586, DVD)", "url": "/opensuse/distribution/13.2/iso/openSUSE-13.2-DVD-i586.iso"}]}, {"distro": "Linux Mint", "urls": [{"name": "17 (64bit, mate)", "url": "/linuxmint-cd/stable/17/linuxmint-17-mate-64bit-v2.iso"}, {"name": "17 (64bit, cinnamon)", "url": "/linuxmint-cd/stable/17/linuxmint-17-cinnamon-64bit-v2.iso"}, {"name": "17 (32bit, mate)", "url": "/linuxmint-cd/stable/17/linuxmint-17-mate-32bit-v2.iso"}, {"name": "17 (32bit, cinnamon)", "url": "/linuxmint-cd/stable/17/linuxmint-17-cinnamon-32bit-v2.iso"}]}];
+function update_isodistro_options() {
+	var s = document.getElementById("isodistro");
+	s.options.length = 0;
+	for (var i=0; i<isoinfo.length; i++) {
+		s.options[s.options.length] = new Option(isoinfo[i].distro, i);
+	}
+	switchdistro();
+}
+
+function modal()
+{
+	var bx = document.getElementById("isomodal");
+	bx.style.visibility = (bx.style.visibility == "visible") ? "hidden" : "visible";
+}
+
+function switchdistro()
+{
+	var distro = document.getElementById("isodistro");
+	var idx = distro.selectedIndex;
+	var s = document.getElementById('isoversion');
+	s.options.length = 0;
+	for (var i=0; i<isoinfo[idx].urls.length; i++) {
+		s.options[s.options.length] = new Option(isoinfo[idx].urls[i].name, i)
+	}
+}
+function downloadiso()
+{
+	var distro=document.getElementById("isodistro");
+	var version=document.getElementById("isoversion");
+	var i=distro.selectedIndex;
+	var j=version.selectedIndex;
+	var link = isoinfo[i].urls[j].url;
+	window.open(link);
+    modal();
+}
+
+update_isodistro_options();
+</script>
+
+<script>
+(function() {
+'use strict'
+
+var userInput = document.getElementById('search')
+var repoList = document.querySelectorAll('.filelist > tbody > tr')
+
+userInput.addEventListener('input', function(evt) {
+    var pat = new RegExp(userInput.value, 'i')
+    Array.prototype.slice.call(repoList).forEach(function(tr) {
+        var a = tr.querySelector('a')
+        if (!pat.test(a.text)) {
+            tr.classList.add('hidden')
+        } else {
+            tr.classList.remove('hidden')
+        }
+    })
+})
+
+document.body.onkeyup = function(evt) {
+    if (evt.keyCode === 83 && document.activeElement.tagName !== 'INPUT') {
+        userInput.scrollIntoView()
+        userInput.focus()
+    }
+}
+})()
+</script>
+<!-- Designed by Miaomiao Li. It's a wonderful life! -->
+<!--
+    vim:ai:et:sta:ts=4:sts=4:sw=4
+-->
+</body>
+</html>
